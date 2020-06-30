@@ -118,9 +118,9 @@ $(document).ready(function() {
 // Global variables
 var responseObject;
 var searchWord;
-var imageURLS;
-var descriptions;
-
+var imageURLS = [];
+var descriptions = [];
+var keywords = [];
 
 
 // These function declaration can go anywhere
@@ -168,14 +168,23 @@ var collectNASAData = function(response) {
         collection = responseObject.collection;
         
         items = collection.items;
-        console.log(JSON.stringify(items) );
+        // console.log(JSON.stringify(items) );
         if (items)
         {
             items.forEach(function(item) {
-                var thisURL = item.href;
-                var thisDescription = item.description;
-                imageURLS.push(thisURL);
-                descriptions.push(thisDescription);
+                if(item.links && item.links[0])
+                {
+                    //console.log(item.links[0].href );
+                    var thisURL = item.links[0].href ;
+                    imageURLS.push(thisURL);
+
+                    if (item.data && item.data[0]) {
+                        var thisDescription = item.data[0].description;
+                        var theseKeyWords = item.data[0].keywords;
+                        descriptions.push(thisDescription);
+                        keywords.push(theseKeyWords);
+                    }
+                }
             });
 
         }
@@ -189,7 +198,7 @@ var collectNASAData = function(response) {
 var displayImageSlider = function() {
     // make the image slider visible on the page
     //$("#imageSlider").style.attr({"display":"block"});
-    $("#imageSlider").style.attr({"opacity":"1"});
+    $("#imageSlider").css({"opacity":"1"});
 }
 var showImgInfoModal = function() {
 
