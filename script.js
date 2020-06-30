@@ -109,7 +109,8 @@ $(document).ready(function() {
 
 
     // This line will need to go inside the JQuery Document Ready code block
-    $("#search-submit").click(searchNASA);
+    $("#searchBtn").click(searchNASA);
+    $(".nasaImg").click(showImgInfoModal);
 
 });
 
@@ -131,8 +132,9 @@ var searchNASA=function(event) {
     // interrupt the browser default process of redirecting to another page
     // when the form input is filled out
     event.preventDefault();
+    console.log("Initializing search");
 
-    searchWord = $("#search-input").val();
+    searchWord = $("#searchInput").val();
     if (searchWord) {
         searchWord = searchWord.toLowerCase();
     }
@@ -180,6 +182,18 @@ var collectNASAData = function(response) {
         // this will trigger the display to show the images in the slider
         displayImageSlider();
     }
+}
+
+var displayImageSlider = function() {
+    // make the image slider visible on the page
+    //$("#imageSlider").style.attr({"display":"block"});
+    $("#imageSlider").style.attr({"opacity":"1"});
+}
+var showImgInfoModal = function() {
+
+    $("#imageInfoModal").style.attr({"display":"block"});
+
+
 }
 
 
