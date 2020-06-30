@@ -118,8 +118,9 @@ $(document).ready(function() {
 // Global variables
 var responseObject;
 var searchWord;
-var imageURLS;
-
+var imageURLS = [];
+var descriptions = [];
+var keywords = [];
 
 
 // These function declaration can go anywhere
@@ -153,7 +154,6 @@ var searchNASA=function(event) {
 // This is the callback function that receives the data from NASA
 var collectNASAData = function(response) {
 
-    // create collection
     var collection; 
     var items;
 
@@ -169,16 +169,33 @@ var collectNASAData = function(response) {
         collection = responseObject.collection;
         
         items = collection.items;
-        console.log(JSON.stringify(items) );
+        // console.log(JSON.stringify(items) );
         if (items)
         {
             items.forEach(function(item) {
-                var thisURL = item.href;
-                imageURLS.push(thisURL);
+                if(item.links && item.links[0])
+                {
+                    // collect image urls
+                    var thisURL = item.links[0].href ;
+
+                    // store them in a local array
+                    imageURLS.push(thisURL);
+
+                    // make sure the data object exists
+                    if (item.data && item.data[0]) {
+                        
+                        // grab the description and keywords and store them
+                        var thisDescription = item.data[0].description;
+                        var theseKeyWords = item.data[0].keywords;
+                        descriptions.push(thisDescription);
+                        keywords.push(theseKeyWords);
+                    }
+                }
             });
 
         }
         
+        buildImageNodes();
         // this will trigger the display to show the images in the slider
         displayImageSlider();
     }
@@ -187,7 +204,7 @@ var collectNASAData = function(response) {
 var displayImageSlider = function() {
     // make the image slider visible on the page
     //$("#imageSlider").style.attr({"display":"block"});
-    $("#imageSlider").style.attr({"opacity":"1"});
+    $("#imageSlider").css({"opacity":"1"});
 }
 var showImgInfoModal = function() {
 
@@ -197,5 +214,18 @@ var showImgInfoModal = function() {
 }
 
 
-
-
+// buildImageNodes
+// This dynamically generates image nodes in the DOM
+// for the slider
+var buildImageNodes = function() {
+    if (imageURLS) {
+        var container = $("#imageSliderImages")
+        container.empty();
+        imageURLS.forEach( function(imageURL, index) {
+            var newImage = $("<img>");
+            newImage.attr("src",imageURL);
+            newImage.attr("data-id", index);
+            container.append(newImage);
+        })
+    }
+}
