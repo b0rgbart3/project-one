@@ -26,27 +26,40 @@
     <div class="row"> 
         <h3>Search:</h3>
         <!-- search input , with an example text -->
-        
-        <input type="text" class="searchInput" placeholder="Ex: Apollo 11">
-        <!-- search button ! i added a tiny little space shuttle for to take off when you search, i may update it  -->
-        <button type="submit" class="searchBtn"><i class="fa fa-space-shuttle"></i></button>
+
+        <form>
+            <input type="text" class="searchInput" id="searchInput" placeholder="Ex: Apollo 11">
+            <!-- search button ! i added a tiny little space shuttle for to take off when you search, i may update it  -->
+            <button type="submit" class="searchBtn" id="searchBtn"><i class="fa fa-space-shuttle"></i></button>
+        </form>
+    </div>
 
 <p></p>
 <p></p>
 
-  <div class="center">
+  <div class="center" id="imageSlider">
         <div class="image">
-        <div class="row">
-        <!-- images will go here / api specs -->
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
-        <p style = "text-align: center;"> images will be shown here </p>
+            <div class="row" id="imageSliderImages">
+            <!-- images will go here / api specs -->
+            <p style = "text-align: center;"> images will be shown here </p>
+            <p style = "text-align: center;"> images will be shown here </p>
+            <p style = "text-align: center;"> images will be shown here </p>
+            <p style = "text-align: center;"> images will be shown here </p>
+            <p style = "text-align: center;"> images will be shown here </p>
+            <p style = "text-align: center;"> images will be shown here </p>
+            <img src="" class="nasaImg" />
+            </div>
         </div>
+
+        <div id="imageInfoModal">
+            <!-- This modal will be hidden initially, but will turn on
+            when the user clicks on an image to display more info -->
         </div>
+    </div>
     
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
