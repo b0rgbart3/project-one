@@ -174,11 +174,16 @@ var collectNASAData = function(response) {
             items.forEach(function(item) {
                 if(item.links && item.links[0])
                 {
-                    //console.log(item.links[0].href );
+                    // collect image urls
                     var thisURL = item.links[0].href ;
+
+                    // store them in a local array
                     imageURLS.push(thisURL);
 
+                    // make sure the data object exists
                     if (item.data && item.data[0]) {
+                        
+                        // grab the description and keywords and store them
                         var thisDescription = item.data[0].description;
                         var theseKeyWords = item.data[0].keywords;
                         descriptions.push(thisDescription);
