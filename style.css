@@ -1,4 +1,9 @@
-
+body {
+    background-color:rgb(31, 32, 50);
+    color:rgb(187, 203, 210);
+    margin:0;
+    padding:0;
+}
 button{
     width: 70px;
     height: auto;
@@ -25,12 +30,16 @@ button:focus {
 
 header {
     width: 100%;
-    height: 100px;
     color: white;
     margin-top: 0;
     text-align: center;
     font-size: xx-large;
-    background-color: #3179ff;
+    background-color: #01163e;
+    padding:0;
+}
+header img {
+    width:100%;
+    max-width:1200px;
 }
 
 h1, h3, p, li {
