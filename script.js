@@ -153,6 +153,7 @@ var searchNASA=function(event) {
 // collectNASAData 
 // This is the callback function that receives the data from NASA
 var collectNASAData = function(response) {
+
     var collection; 
     var items;
 
