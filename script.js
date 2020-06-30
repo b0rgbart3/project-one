@@ -119,6 +119,7 @@ $(document).ready(function() {
 var responseObject;
 var searchWord;
 var imageURLS;
+var descriptions;
 
 
 
@@ -152,8 +153,6 @@ var searchNASA=function(event) {
 // collectNASAData 
 // This is the callback function that receives the data from NASA
 var collectNASAData = function(response) {
-
-    
     var collection; 
     var items;
 
@@ -174,11 +173,14 @@ var collectNASAData = function(response) {
         {
             items.forEach(function(item) {
                 var thisURL = item.href;
+                var thisDescription = item.description;
                 imageURLS.push(thisURL);
+                descriptions.push(thisDescription);
             });
 
         }
         
+        buildImageNodes();
         // this will trigger the display to show the images in the slider
         displayImageSlider();
     }
@@ -197,5 +199,18 @@ var showImgInfoModal = function() {
 }
 
 
-
-
+// buildImageNodes
+// This dynamically generates image nodes in the DOM
+// for the slider
+var buildImageNodes = function() {
+    if (imageURLS) {
+        var container = $("#imageSliderImages")
+        container.empty();
+        imageURLS.forEach( function(imageURL, index) {
+            var newImage = $("<img>");
+            newImage.attr("src",imageURL);
+            newImage.attr("data-id", index);
+            container.append(newImage);
+        })
+    }
+}
