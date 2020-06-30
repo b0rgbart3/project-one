@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <title>Spaceforce</title>
 </head>
 <body>
-    <form><input type="text" id="search-input" />
-        <button type="submit"  id='search-submit'>Search</button>
-    </form>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script.js"></script>
+     <header class="header">
+         <!-- this is the title. will be played with when i'm done with css, also i can replace the background color when we find an image replacement -->
+        <h1>Spaceforce</h1>
+        </header>
+<div class="container">
+    <!-- search class -->
+    <div class="search">
+    <div class="row">
+        <!-- example of text, this is informal -->
+        <p>example text of instructions:</p>
+        <p> search for something space-related, click the space ship, an image of your search will show, when you click the image, a wiki page of more info will be given</p>
+        </p>
+        </div>
+    
+    <div class="row"> 
+        <h3>Search:</h3>
+        <!-- search input , with an example text -->
+        
+        <input type="text" class="searchInput" placeholder="Ex: Apollo 11">
+        <!-- search button ! i added a tiny little space shuttle for to take off when you search, i may update it  -->
+        <button type="submit" class="searchBtn"><i class="fa fa-space-shuttle"></i></button>
 
+<p></p>
+<p></p>
 
+  <div class="center">
+        <div class="image">
+        <div class="row">
+        <!-- images will go here / api specs -->
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        <p style = "text-align: center;"> images will be shown here </p>
+        </div>
+        </div>
+    
 </body>
 </html>
