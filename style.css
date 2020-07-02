@@ -7,6 +7,7 @@ body {
     background-size:100% 100%;
     background-repeat: none;
 }
+
 /* currently using the materialize styling for button, may come back to this - HS */
 /* button{
     width: 70px;
@@ -30,7 +31,6 @@ button:focus {
 .row {
     text-align: center;
 }
-
 
 header {
     width: 100%;
@@ -60,6 +60,11 @@ html {
     height: 100%;
 }
 
+
+.searchInput {
+    color:white;
+
+}
 
 .center {
     display: flex;
