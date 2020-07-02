@@ -6,12 +6,15 @@ body {
     background-image:url(assets/stars2.jpg);
     background-size:100% 100%;
     background-repeat: none;
+    background-attachment: fixed;
 }
+
 /* currently using the materialize styling for button, may come back to this - HS */
-/* button{
+/*
+ button{
     width: 70px;
     height: auto;
-    background-color: #3179ff;
+    background-color: #305E88;
     border: none;
     border-radius: 5px;
     transition-duration: .4s;
@@ -24,13 +27,12 @@ button:hover {
 
 button:focus {
     border: none;
-    outline-color: #3179ff;
+    outline-color: #305E88;
 } */
 
 .row {
     text-align: center;
 }
-
 
 header {
     width: 100%;
@@ -38,9 +40,10 @@ header {
     margin-top: 0;
     text-align: center;
     font-size: xx-large;
-    background-color: #01163e;
+    background-color: #BACFE2;
     padding:0;
 }
+
 header img {
     width:100%;
     max-width:1200px;
@@ -60,6 +63,17 @@ html {
     height: 100%;
 }
 
+
+.searchInput {
+    color:white;
+    background-color: transparent;
+
+}
+
+.searchBtn {
+    background-color: #305E88;
+    background-color: transparent;
+}
 
 .center {
     display: flex;
@@ -112,7 +126,7 @@ html {
 
   .wrapper {
       width:100%;
-      border:8px solid black;
+      border:8px solid #BACFE2;
       border-radius:12px;
       margin:auto;
       max-width:800px;
