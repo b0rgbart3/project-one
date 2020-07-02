@@ -63,7 +63,6 @@ html {
     height: 100%;
 }
 
-
 .searchInput {
     color:white;
     background-color: transparent;
@@ -71,7 +70,7 @@ html {
 }
 
 .searchBtn {
-    background-color: #305E88;
+    background-color: #305E88  !important;
     background-color: transparent;
 }
 
