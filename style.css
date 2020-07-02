@@ -6,6 +6,7 @@ body {
     background-image:url(assets/stars2.jpg);
     background-size:100% 100%;
     background-repeat: none;
+    background-attachment: fixed;
 }
 
 /* currently using the materialize styling for button, may come back to this - HS */
