@@ -4,7 +4,8 @@ body {
     margin:0;
     padding:0;
 }
-button{
+/* currently using the materialize styling for button, may come back to this - HS */
+/* button{
     width: 70px;
     height: auto;
     background-color: #3179ff;
@@ -21,7 +22,7 @@ button:hover {
 button:focus {
     border: none;
     outline-color: #3179ff;
-}
+} */
 
 .row {
     text-align: center;
