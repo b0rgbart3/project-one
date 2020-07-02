@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <!-- Below is the stylesheet for Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+
     <title>Spaceforce</title>
 </head>
 <body>
@@ -27,29 +31,35 @@
         <h3>Search:</h3>
         <!-- search input , with an example text -->
 
-        <form>
-            <input type="text" class="searchInput" id="searchInput" placeholder="Ex: Apollo 11">
-            <!-- search button ! i added a tiny little space shuttle for to take off when you search, i may update it  -->
-            <button type="submit" class="searchBtn" id="searchBtn"><i class="fa fa-space-shuttle"></i></button>
-        </form>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 push-s3">
+                        <input type="text" class = "searchInput center-align" id="searchInput" placeholder="Ex: Apollo 11">
+                        <label for="input_text">tadaKeywords</label>
+                        <button class="searchBtn waves-effect waves-light btn" id="searchBtn"><i class="fa fa-space-shuttle"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
 <p></p>
 <p></p>
 
-  <div class="center" id="imageSlider">
+  <div class="center" id="imageSlider" >
         <div class="image">
-            <div class="row" id="imageSliderImages">
+            <div class="carousel" id = "imageSliderImages">
             <!-- images will go here / api specs -->
-            <p style = "text-align: center;"> images will be shown here </p>
-            <p style = "text-align: center;"> images will be shown here </p>
-            <p style = "text-align: center;"> images will be shown here </p>
-            <p style = "text-align: center;"> images will be shown here </p>
-            <p style = "text-align: center;"> images will be shown here </p>
-            <p style = "text-align: center;"> images will be shown here </p>
-            <img src="" class="nasaImg" />
+            <!-- <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+            <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a> -->
+            <!-- <img src="" class="nasaImg" /> -->
             </div>
         </div>
+
 
         <div id="imageInfoModal">
             <!-- This modal will be hidden initially, but will turn on
@@ -60,6 +70,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
