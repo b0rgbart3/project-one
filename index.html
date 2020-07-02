@@ -12,7 +12,7 @@
     <title>Spaceforce</title>
 </head>
 <body>
-
+<div class="wrapper group">
      <header class="header">
          <!-- this is the title. will be played with when i'm done with css, also i can replace the background color when we find an image replacement -->
        <img src="assets/logo4.jpg">
@@ -20,17 +20,17 @@
 <div class="container">
     <!-- search class -->
     <div class="search">
-    <div class="row">
-        <!-- example of text, this is informal -->
-        <p>example text of instructions:</p>
-        <p> search for something space-related, click the space ship, an image of your search will show, when you click the image, a wiki page of more info will be given</p>
-        </p>
+        <div class="row">
+            <!-- example of text, this is informal -->
+        
+            <p> Search for something space-related, click the space ship, an image of your search will show, when you click the image, a wiki page of more info will be given</p>
+            </p>
         </div>
     
-    <div class="row"> 
-        <h3>Search:</h3>
-        <!-- search input , with an example text -->
-
+        <div class="row"> 
+            <h3>Search:</h3>
+            <!-- search input , with an example text -->
+        </div> <!-- end of row-->
         <div class="row">
             <form class="col s12">
                 <div class="row">
@@ -41,13 +41,12 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-
+        </div> <!-- end of row-->
+    </div><!-- end of search -->
+</div> <!-- end of container-->
 <p></p>
-<p></p>
 
-  <div class="center" id="imageSlider" >
+  <div id="imageSlider" >
         <div class="image">
             <div class="carousel" id = "imageSliderImages">
             <!-- images will go here / api specs -->
@@ -66,7 +65,7 @@
             when the user clicks on an image to display more info -->
         </div>
     </div>
-    
+</div>  <!-- end of wrapper div -->    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

@@ -3,6 +3,9 @@ body {
     color:rgb(187, 203, 210);
     margin:0;
     padding:0;
+    background-image:url(assets/stars2.jpg);
+    background-size:100% 100%;
+    background-repeat: none;
 }
 /* currently using the materialize styling for button, may come back to this - HS */
 /* button{
@@ -68,10 +71,10 @@ html {
 }
 
 .image {
-    border: solid 1px #8d8d8d;
     margin: auto;
-    width: 70%;
-
+    width: 100%;
+    position: relative;
+    top:-100px;
 }
 
 #imageSlider {
@@ -91,3 +94,28 @@ html {
     padding:20px;
     color:black;
 }
+
+
+/*  ClearFix  */
+/*  The ClearFix by Tony Aslett and Nicholas Gallagher */
+.group:before,
+.group:after {
+  content: "";
+  display: table; }
+
+.group:after {
+  clear: both; }
+
+.group {
+  zoom: 1;
+  /* IE6&7 */ }
+
+  .wrapper {
+      width:100%;
+      border:8px solid black;
+      border-radius:12px;
+      margin:auto;
+      max-width:800px;
+      background-color:rgb(31, 32, 50);
+      margin-top:20px;
+  }
