@@ -213,11 +213,15 @@ var collectNASAData = function(response) {
                     // make sure the data object exists
                     if (item.data && item.data[0]) {
                         
-                        // grab the description and keywords and store them
-                        var thisDescription = item.data[0].description;
-                        var theseKeyWords = item.data[0].keywords;
-                        descriptions.push(thisDescription);
-                        keywords.push(theseKeyWords);
+                        // only grab images for now - no video or audio files
+                        if (item.data[0].media_type === "image")
+                        {
+                            // grab the description and keywords and store them
+                            var thisDescription = item.data[0].description;
+                            var theseKeyWords = item.data[0].keywords;
+                            descriptions.push(thisDescription);
+                            keywords.push(theseKeyWords);
+                        }
                     }
                 }
             });
