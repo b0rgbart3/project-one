@@ -132,3 +132,12 @@ html {
       background-color:rgb(31, 32, 50);
       margin-top:20px;
   }
+
+  .carousel-item {
+      width:400px;
+      height:400px;
+  }
+
+  .presets {
+      text-align: center;
+  }
