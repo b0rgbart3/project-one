@@ -303,14 +303,21 @@ var buildImageNodes = function() {
         imageURLS.forEach( function(imageURL, index) {
             var newImage = $("<img>");
             newImage.attr("src",imageURL);
+            newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
             anchorTag.append(newImage);
             container.append(anchorTag);
-
+            
         })
         $('.carousel').carousel();
+
+        new jBox('Tooltip', {
+            attach: '.carousel-item'
+          });
+
+        
     }
 }
 
