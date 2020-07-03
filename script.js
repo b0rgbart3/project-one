@@ -112,11 +112,13 @@ $(document).ready(function() {
 
 
     // This line will need to go inside the JQuery Document Ready code block
-    $("#searchBtn").click(searchNASA);
+    $("#searchBtn").click(respondToSearchInput);
     // started putting in some quick code with my (HS) tutor to get the Wiki API up and running, will comment out all Wiki API below for now
     // $("#searchBtn").click(searchWIKI);
     $(".nasaImg").click(showImgInfoModal);
 
+
+    $(".preset").click(presetSearch);
 });
 
 
@@ -133,14 +135,20 @@ var keywords = [];
 // searchNASA - this function gets called when the user
 // enters a new search term in the input field
 
-var searchNASA=function(event) {
+var respondToSearchInput =function(event) {
  
     // interrupt the browser default process of redirecting to another page
     // when the form input is filled out
     event.preventDefault();
-    console.log("Initializing search");
+   // console.log("Initializing search");
 
-    searchWord = $("#searchInput").val();
+    searchNASA();
+}
+
+var searchNASA = function() {
+
+    var searchWord = $("#searchInput").val();
+    console.log(searchWord);
     if (searchWord) {
         searchWord = searchWord.toLowerCase();
     }
@@ -185,6 +193,10 @@ var collectNASAData = function(response) {
 
     var collection; 
     var items;
+
+    // clear out the arrays to start with
+    imageURLS=[];
+    descriptions=[];
 
     // Here I need to parse through the response object into
     // data that we can actually use, starting with an array of images
@@ -318,4 +330,11 @@ var buildImageNodes = function() {
     }
 }
 
-
+var presetSearch = function(event) {
+    if (event && event.target && event.target.id) {
+    var thisPreset = event.target.id;
+    console.log(thisPreset);
+    $("#searchInput").val(thisPreset);
+    searchNASA();
+    }
+}
