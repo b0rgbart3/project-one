@@ -303,8 +303,10 @@ var buildImageNodes = function() {
         imageURLS.forEach( function(imageURL, index) {
             var newImage = $("<img>");
             newImage.attr("src",imageURL);
+            // donna tweaked this to have the jbox work //
             newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
+            // donna added tweaked this to have the jbox work //
             newImage.attr("class", "hover-description");
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
@@ -313,12 +315,22 @@ var buildImageNodes = function() {
             
         })
         $('.carousel').carousel();
-
+        
+        // donnas modal coding //
         new jBox('Tooltip', {
-            attach: '.hover-description'
+            attach: '.hover-description',
+            width: 400,
           });
 
-        
+
+          // 
+          // new jBox('Modal', {
+          // width: 400,
+          // attach: '.hover-description',
+          // title: 'More Info',
+          // content: 'Read More: (WIKI API LINKS AND INFO GOES HERE'
+          });
+           // 
     }
 }
 
