@@ -1,6 +1,6 @@
 body {
     background-color:rgb(31, 32, 50);
-    color:rgb(187, 203, 210);
+    color:rgb(145, 171, 182);
     margin:0;
     padding:0;
     background-image:url(assets/stars2.jpg);
@@ -140,4 +140,8 @@ html {
 
   .presets {
       text-align: center;
+  }
+
+  .jBox {
+      width: 300;
   }
