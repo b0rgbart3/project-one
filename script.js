@@ -305,6 +305,7 @@ var buildImageNodes = function() {
             newImage.attr("src",imageURL);
             newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
+            newImage.attr("class", "hover-description");
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
             anchorTag.append(newImage);
@@ -314,7 +315,7 @@ var buildImageNodes = function() {
         $('.carousel').carousel();
 
         new jBox('Tooltip', {
-            attach: '.carousel-item'
+            attach: '.hover-description'
           });
 
         
