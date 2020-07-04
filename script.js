@@ -112,13 +112,11 @@ $(document).ready(function() {
 
 
     // This line will need to go inside the JQuery Document Ready code block
-    $("#searchBtn").click(respondToSearchInput);
+    $("#searchBtn").click(searchNASA);
     // started putting in some quick code with my (HS) tutor to get the Wiki API up and running, will comment out all Wiki API below for now
     // $("#searchBtn").click(searchWIKI);
     $(".nasaImg").click(showImgInfoModal);
 
-
-    $(".preset").click(presetSearch);
 });
 
 
@@ -135,20 +133,14 @@ var keywords = [];
 // searchNASA - this function gets called when the user
 // enters a new search term in the input field
 
-var respondToSearchInput =function(event) {
+var searchNASA=function(event) {
  
     // interrupt the browser default process of redirecting to another page
     // when the form input is filled out
     event.preventDefault();
-   // console.log("Initializing search");
+    console.log("Initializing search");
 
-    searchNASA();
-}
-
-var searchNASA = function() {
-
-    var searchWord = $("#searchInput").val();
-    console.log(searchWord);
+    searchWord = $("#searchInput").val();
     if (searchWord) {
         searchWord = searchWord.toLowerCase();
     }
@@ -194,10 +186,6 @@ var collectNASAData = function(response) {
     var collection; 
     var items;
 
-    // clear out the arrays to start with
-    imageURLS=[];
-    descriptions=[];
-
     // Here I need to parse through the response object into
     // data that we can actually use, starting with an array of images
 
@@ -225,15 +213,11 @@ var collectNASAData = function(response) {
                     // make sure the data object exists
                     if (item.data && item.data[0]) {
                         
-                        // only grab images for now - no video or audio files
-                        if (item.data[0].media_type === "image")
-                        {
-                            // grab the description and keywords and store them
-                            var thisDescription = item.data[0].description;
-                            var theseKeyWords = item.data[0].keywords;
-                            descriptions.push(thisDescription);
-                            keywords.push(theseKeyWords);
-                        }
+                        // grab the description and keywords and store them
+                        var thisDescription = item.data[0].description;
+                        var theseKeyWords = item.data[0].keywords;
+                        descriptions.push(thisDescription);
+                        keywords.push(theseKeyWords);
                     }
                 }
             });
@@ -319,22 +303,35 @@ var buildImageNodes = function() {
         imageURLS.forEach( function(imageURL, index) {
             var newImage = $("<img>");
             newImage.attr("src",imageURL);
+            // donna tweaked this to have the jbox work //
+            newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
+            // donna added tweaked this to have the jbox work //
+            newImage.attr("class", "hover-description");
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
             anchorTag.append(newImage);
             container.append(anchorTag);
-
+            
         })
         $('.carousel').carousel();
+        
+        // donnas modal coding //
+        new jBox('Tooltip', {
+            attach: '.hover-description',
+            width: 400,
+          });
+
+
+          // 
+          // new jBox('Modal', {
+          // width: 400,
+          // attach: '.hover-description',
+          // title: 'More Info',
+          // content: 'Read More: (WIKI API LINKS AND INFO GOES HERE'
+          });
+           // 
     }
 }
 
-var presetSearch = function(event) {
-    if (event && event.target && event.target.id) {
-    var thisPreset = event.target.id;
-    console.log(thisPreset);
-    $("#searchInput").val(thisPreset);
-    searchNASA();
-    }
-}
+
