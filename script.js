@@ -1,122 +1,21 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// =============================
-// Bart's Code below here....
-
-
 $(document).ready(function() {
     
     // $('.carousel').carousel();
-    
 
+    //  This was the original search button handler
+    //$("#searchBtn").click(searchNASA);
 
+    // This is bart's new search button handler
+    $("#searchBtn").click(respondToSearchInput);
 
-    // This line will need to go inside the JQuery Document Ready code block
-    $("#searchBtn").click(searchNASA);
     // started putting in some quick code with my (HS) tutor to get the Wiki API up and running, will comment out all Wiki API below for now
     $("#searchBtn").click(searchWIKI);
     $(".nasaImg").click(showImgInfoModal);
 
+    /// This is the button handler for the preset buttons
+    $(".preset").click(presetSearch);
 });
 
 
@@ -128,17 +27,19 @@ var descriptions = [];
 var keywords = [];
 
 
-// These function declaration can go anywhere
+// This is the search input input handler
+var respondToSearchInput =function(event) {
 
-// searchNASA - this function gets called when the user
-// enters a new search term in the input field
+    // interrupt the browser default process of 
+    // redirecting to another page	   
+    
+    event.preventDefault();	   
+    console.log("Initializing search");	 
 
-var searchNASA=function(event) {
- 
-    // interrupt the browser default process of redirecting to another page
-    // when the form input is filled out
-    event.preventDefault();
-    console.log("Initializing search");
+    searchNASA();
+}
+
+var searchNASA=function() {
 
     searchWord = $("#searchInput").val();
     if (searchWord) {
@@ -196,6 +97,11 @@ var collectNASAData = function(response) {
         // in case we want to look at it later
         responseObject = response;
         collection = responseObject.collection;
+
+         // clear out the arrays to start with
+        imageURLS=[];
+        descriptions=[];
+
         
         items = collection.items;
         // console.log(JSON.stringify(items) );
@@ -208,7 +114,8 @@ var collectNASAData = function(response) {
                     var thisURL = item.links[0].href ;
 
                     // store them in a local array
-                    imageURLS.push(thisURL);
+                    if (thisURL) {
+                    imageURLS.push(thisURL); }
 
                     // make sure the data object exists
                     if (item.data && item.data[0]) {
@@ -303,14 +210,35 @@ var buildImageNodes = function() {
         imageURLS.forEach( function(imageURL, index) {
             var newImage = $("<img>");
             newImage.attr("src",imageURL);
+            // donna tweaked this to have the jbox work //
+            newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
+            // donna added tweaked this to have the jbox work //
+            newImage.attr("class", "hover-description");
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
+            
             anchorTag.append(newImage);
             container.append(anchorTag);
-
+            
         })
         $('.carousel').carousel();
+        
+        // donnas modal coding //
+        new jBox('Tooltip', {
+            attach: '.hover-description',
+            width: 400,
+          });
+
+
+          // 
+          // new jBox('Modal', {
+          // width: 400,
+          // attach: '.hover-description',
+          // title: 'More Info',
+          // content: 'Read More: (WIKI API LINKS AND INFO GOES HERE'
+      //    });
+           // 
     }
 }
 // this is broken
@@ -331,5 +259,19 @@ var buildImageNodes = function() {
 //         // $('.carousel').carousel();
 //     }
 // }
+
+
+
+var presetSearch = function(event) {
+    if (event && event.target && event.target.id) {
+        var thisPreset = event.target.id;
+        if (thisPreset) {
+            thisPreset = thisPreset.toLowerCase();
+        }
+        console.log(thisPreset);
+        $("#searchInput").val(thisPreset);
+        searchNASA();
+        }
+}
 
 
