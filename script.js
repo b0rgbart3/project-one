@@ -114,7 +114,7 @@ $(document).ready(function() {
     // This line will need to go inside the JQuery Document Ready code block
     $("#searchBtn").click(searchNASA);
     // started putting in some quick code with my (HS) tutor to get the Wiki API up and running, will comment out all Wiki API below for now
-    // $("#searchBtn").click(searchWIKI);
+    $("#searchBtn").click(searchWIKI);
     $(".nasaImg").click(showImgInfoModal);
 
 });
@@ -155,27 +155,27 @@ var searchNASA=function(event) {
       .then(collectNASAData);
 }
 
-// var searchWIKI=function(event) {
+var searchWIKI=function(event) {
  
-//     // interrupt the browser default process of redirecting to another page
-//     // when the form input is filled out
-//     event.preventDefault();
-//     console.log("Initializing Wiki search");
+    // interrupt the browser default process of redirecting to another page
+    // when the form input is filled out
+    event.preventDefault();
+    console.log("Initializing Wiki search");
 
-//     searchWord = $("#searchInput").val();
-//     if (searchWord) {
-//         searchWord = searchWord.toLowerCase();
-//     }
-//     var WIKIQueryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchWord + "&limit=1&namespace=0&format=jsonfm";
+    searchWord = $("#searchInput").val();
+    if (searchWord) {
+        searchWord = searchWord.toLowerCase();
+    }
+    var WIKIQueryURL = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/rest.php/v1/search/page?q=" + searchWord + "&limit=1";
 
-//     // Performing an AJAX request with the queryURL
-//     $.ajax({
-//       url: WIKIQueryURL,
-//       method: "GET"
-//     })
-//       // After data comes back from the request
-//       .then(collectWIKIData);
-// }
+    // Performing an AJAX request with the queryURL
+    $.ajax({
+      url: WIKIQueryURL,
+      method: "GET"
+    })
+      // After data comes back from the request
+      .then(collectWIKIData);
+}
 
 
 
@@ -230,18 +230,18 @@ var collectNASAData = function(response) {
     }
 }
 
-// var collectWIKIData = function(response) {
+var collectWIKIData = function(response) {
 
-//     var collection; 
-//     var items;
+    var collection; 
+    var items;
 
     // Here I need to parse through the response object into
     // data that we can actually use, starting with an array of images
 
     // make sure we got something
-    // if (response) {
+    if (response) {
         
-    //     console.log(JSON.stringify(response));
+        console.log(response);
         // What the heck - let's save our own copy of this response object
         // in case we want to look at it later
         // responseObject = response;
@@ -254,16 +254,16 @@ var collectNASAData = function(response) {
         //     items.forEach(function(item) {
         //         if(item.links && item.links[0])
         //         {
-        //             // collect image urls
+        // //             // collect image urls
         //             var thisURL = item.links[0].href ;
 
-        //             // store them in a local array
-        //             imageURLS.push(thisURL);
+        // //             // store them in a local array
+        //             wikiURL.push(thisURL);
 
-        //             // make sure the data object exists
+        // //             // make sure the data object exists
         //             if (item.data && item.data[0]) {
                         
-        //                 // grab the description and keywords and store them
+        // //                 // grab the description and keywords and store them
         //                 var thisDescription = item.data[0].description;
         //                 var theseKeyWords = item.data[0].keywords;
         //                 descriptions.push(thisDescription);
@@ -274,11 +274,11 @@ var collectNASAData = function(response) {
 
         // }
         
-        // buildImageNodes();
+        // buildWikiNodes();
         // // this will trigger the display to show the images in the slider
         // displayImageSlider();
-//     }
-// }
+    }
+}
 
 var displayImageSlider = function() {
     // make the image slider visible on the page
@@ -313,5 +313,23 @@ var buildImageNodes = function() {
         $('.carousel').carousel();
     }
 }
+// this is broken
+// var buildWikiNodes = function() {
+//     if (wikiURL) {
+//         var container = $("#wikiDescription")
+//         container.empty();
+//         wikiURL.forEach( function(wikiURL, index) {
+//             var newImage = $("<img>");
+//             newImage.attr("src",imageURL);
+//             newImage.attr("data-id", index);
+//             // var anchorTag = $("<a>")
+//             // anchorTag.attr("class", "carousel-item");
+//             // anchorTag.append(newImage);
+//             container.append(anchorTag);
+
+//         })
+//         // $('.carousel').carousel();
+//     }
+// }
 
 
