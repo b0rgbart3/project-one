@@ -149,41 +149,14 @@ var collectWIKIData = function(response) {
     if (response) {
         
         console.log(response);
+        console.log(response.pages[0]);
+        console.log(response.pages[0].title);
+        console.log(response.pages[0].excerpt);
         // What the heck - let's save our own copy of this response object
         // in case we want to look at it later
-        // responseObject = response;
-        // collection = responseObject.collection;
         
-        // items = collection.items;
-        // console.log(JSON.stringify(items) );
-        // if (items)
-        // {
-        //     items.forEach(function(item) {
-        //         if(item.links && item.links[0])
-        //         {
-        // //             // collect image urls
-        //             var thisURL = item.links[0].href ;
-
-        // //             // store them in a local array
-        //             wikiURL.push(thisURL);
-
-        // //             // make sure the data object exists
-        //             if (item.data && item.data[0]) {
-                        
-        // //                 // grab the description and keywords and store them
-        //                 var thisDescription = item.data[0].description;
-        //                 var theseKeyWords = item.data[0].keywords;
-        //                 descriptions.push(thisDescription);
-        //                 keywords.push(theseKeyWords);
-        //             }
-        //         }
-        //     });
-
-        // }
         
-        // buildWikiNodes();
-        // // this will trigger the display to show the images in the slider
-        // displayImageSlider();
+        buildWikiNodes(response.pages[0]);
     }
 }
 
@@ -241,24 +214,18 @@ var buildImageNodes = function() {
            // 
     }
 }
-// this is broken
-// var buildWikiNodes = function() {
-//     if (wikiURL) {
-//         var container = $("#wikiDescription")
-//         container.empty();
-//         wikiURL.forEach( function(wikiURL, index) {
-//             var newImage = $("<img>");
-//             newImage.attr("src",imageURL);
-//             newImage.attr("data-id", index);
-//             // var anchorTag = $("<a>")
-//             // anchorTag.attr("class", "carousel-item");
-//             // anchorTag.append(newImage);
-//             container.append(anchorTag);
+// this is fixed.
+var buildWikiNodes = function(searchInfo) {
+    
+    var wikiTag = $("<h1>")
+    // wikiTag.attr("href", href);
+    var wikiTagtoo= $("<p>")
+    wikiTag.text(searchInfo.title);
+    wikiTagtoo.html(searchInfo.excerpt);
+    $("#wikiDescription").append(wikiTag);
+    $("#wikiDescription").append(wikiTagtoo);
 
-//         })
-//         // $('.carousel').carousel();
-//     }
-// }
+}
 
 
 
