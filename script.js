@@ -189,7 +189,7 @@ var buildImageNodes = function() {
             // donna tweaked this to have the jbox work //
             newImage.attr("title",descriptions[index])
             newImage.attr("data-id", index);
-            // donna added tweaked this to have the jbox work //
+            // donna tweaked this to have the jbox work //
             newImage.attr("class", "hover-description");
             var anchorTag = $("<a>")
             anchorTag.attr("class", "carousel-item");
