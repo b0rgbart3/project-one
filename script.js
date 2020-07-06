@@ -11,7 +11,7 @@ $(document).ready(function() {
     $("#searchBtn").click(respondToSearchInput);
 
     // started putting in some quick code with my (HS) tutor to get the Wiki API up and running, will comment out all Wiki API below for now
-    // $("#searchBtn").click(searchWIKI);
+    $("#searchBtn").click(searchWIKI);
     $(".nasaImg").click(showImgInfoModal);
 
     /// This is the button handler for the preset buttons
@@ -56,27 +56,27 @@ var searchNASA=function() {
       .then(collectNASAData);
 }
 
-// var searchWIKI=function(event) {
+var searchWIKI=function(event) {
  
-//     // interrupt the browser default process of redirecting to another page
-//     // when the form input is filled out
-//     event.preventDefault();
-//     console.log("Initializing Wiki search");
+    // interrupt the browser default process of redirecting to another page
+    // when the form input is filled out
+    event.preventDefault();
+    console.log("Initializing Wiki search");
 
-//     searchWord = $("#searchInput").val();
-//     if (searchWord) {
-//         searchWord = searchWord.toLowerCase();
-//     }
-//     var WIKIQueryURL = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchWord + "&limit=1&namespace=0&format=jsonfm";
+    searchWord = $("#searchInput").val();
+    if (searchWord) {
+        searchWord = searchWord.toLowerCase();
+    }
+    var WIKIQueryURL = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/rest.php/v1/search/page?q=" + searchWord + "&limit=1";
 
-//     // Performing an AJAX request with the queryURL
-//     $.ajax({
-//       url: WIKIQueryURL,
-//       method: "GET"
-//     })
-//       // After data comes back from the request
-//       .then(collectWIKIData);
-// }
+    // Performing an AJAX request with the queryURL
+    $.ajax({
+      url: WIKIQueryURL,
+      method: "GET"
+    })
+      // After data comes back from the request
+      .then(collectWIKIData);
+}
 
 
 
@@ -137,55 +137,28 @@ var collectNASAData = function(response) {
     }
 }
 
-// var collectWIKIData = function(response) {
+var collectWIKIData = function(response) {
 
-//     var collection; 
-//     var items;
+    var collection; 
+    var items;
 
     // Here I need to parse through the response object into
     // data that we can actually use, starting with an array of images
 
     // make sure we got something
-    // if (response) {
+    if (response) {
         
-    //     console.log(JSON.stringify(response));
+        console.log(response);
+        console.log(response.pages[0]);
+        console.log(response.pages[0].title);
+        console.log(response.pages[0].excerpt);
         // What the heck - let's save our own copy of this response object
         // in case we want to look at it later
-        // responseObject = response;
-        // collection = responseObject.collection;
         
-        // items = collection.items;
-        // console.log(JSON.stringify(items) );
-        // if (items)
-        // {
-        //     items.forEach(function(item) {
-        //         if(item.links && item.links[0])
-        //         {
-        //             // collect image urls
-        //             var thisURL = item.links[0].href ;
-
-        //             // store them in a local array
-        //             imageURLS.push(thisURL);
-
-        //             // make sure the data object exists
-        //             if (item.data && item.data[0]) {
-                        
-        //                 // grab the description and keywords and store them
-        //                 var thisDescription = item.data[0].description;
-        //                 var theseKeyWords = item.data[0].keywords;
-        //                 descriptions.push(thisDescription);
-        //                 keywords.push(theseKeyWords);
-        //             }
-        //         }
-        //     });
-
-        // }
         
-        // buildImageNodes();
-        // // this will trigger the display to show the images in the slider
-        // displayImageSlider();
-//     }
-// }
+        buildWikiNodes(response.pages[0]);
+    }
+}
 
 var displayImageSlider = function() {
     // make the image slider visible on the page
@@ -240,6 +213,18 @@ var buildImageNodes = function() {
       //    });
            // 
     }
+}
+// this is fixed.
+var buildWikiNodes = function(searchInfo) {
+    
+    var wikiTag = $("<h1>")
+    // wikiTag.attr("href", href);
+    var wikiTagtoo= $("<p>")
+    wikiTag.text(searchInfo.title);
+    wikiTagtoo.html(searchInfo.excerpt);
+    $("#wikiDescription").append(wikiTag);
+    $("#wikiDescription").append(wikiTagtoo);
+
 }
 
 
