@@ -59,7 +59,9 @@ https://hannahpsmith1.github.io/project-one/
 
 ## Contributors
 --Hannah Smith
+
 --Bart Dority
+
 --Donna Nguyen
 
 ## Licenses 
@@ -67,5 +69,5 @@ https://hannahpsmith1.github.io/project-one/
 
 ## Sources: 
 1. Libraries are referenced above in Technologies
-2. xxx
+2. Stack Overflow 
 3. xxx

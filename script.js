@@ -60,14 +60,15 @@ var searchWIKI=function(event) {
  
     // interrupt the browser default process of redirecting to another page
     // when the form input is filled out
-    event.preventDefault();
+    // event.preventDefault();
     console.log("Initializing Wiki search");
 
     searchWord = $("#searchInput").val();
     if (searchWord) {
         searchWord = searchWord.toLowerCase();
     }
-    var WIKIQueryURL = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/rest.php/v1/search/page?q=" + searchWord + "&limit=1";
+    // var CorsKey = "https://cors-anywhere.herokuapp.com/";
+    var WIKIQueryURL ="https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/rest.php/v1/search/page?q=" + searchWord + "&limit=1";
 
     // Performing an AJAX request with the queryURL
     $.ajax({
@@ -136,8 +137,10 @@ var collectNASAData = function(response) {
         displayImageSlider();
     }
 }
+// console.log("hello")
 
 var collectWIKIData = function(response) {
+    
 
     var collection; 
     var items;
@@ -217,7 +220,7 @@ var buildImageNodes = function() {
 // this is fixed.
 var buildWikiNodes = function(searchInfo) {
     
-    var wikiTag = $("<h1>")
+    var wikiTag = $("<h2>")
     // wikiTag.attr("href", href);
     var wikiTagtoo= $("<p>")
     wikiTag.text(searchInfo.title);
@@ -238,6 +241,7 @@ var presetSearch = function(event) {
         console.log(thisPreset);
         $("#searchInput").val(thisPreset);
         searchNASA();
+        searchWIKI();
         }
 }
 

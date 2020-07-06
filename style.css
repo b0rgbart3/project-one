@@ -108,6 +108,10 @@ html {
     color:black;
 }
 
+.wiki {
+    align-items: top;
+}
+
 
 /*  ClearFix  */
 /*  The ClearFix by Tony Aslett and Nicholas Gallagher */
