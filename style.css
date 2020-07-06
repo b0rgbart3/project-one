@@ -73,6 +73,10 @@ html {
     background-color: #305E88  !important;
     background-color: transparent;
 }
+.error {
+    display: none;
+    background-color: red;
+}
 
 .center {
     display: flex;

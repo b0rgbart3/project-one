@@ -45,6 +45,13 @@ var searchNASA=function() {
     if (searchWord) {
         searchWord = searchWord.toLowerCase();
     }
+    console.log(searchWord.length);
+    if (searchWord.length < 3) {
+        $("#error").css({"display": "block"})
+        // console.log(searchWord.length);
+    }
+    else {
+        $("#error").css({"display": "none"})
     var NASAQueryURL = "https://images-api.nasa.gov/search?q="+searchWord;
 
     // Performing an AJAX request with the queryURL
@@ -54,7 +61,7 @@ var searchNASA=function() {
     })
       // After data comes back from the request
       .then(collectNASAData);
-}
+}}
 
 var searchWIKI=function(event) {
  
