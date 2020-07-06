@@ -14,25 +14,36 @@ body {
  button{
     width: 70px;
     height: auto;
-    background-color: #305E88;
+    background-color: #6cafeb;
     border: none;
     border-radius: 5px;
     transition-duration: .4s;
 }
+*/
 
+button:active{
+    background:#6cafeb !important;
+}
 
 button:hover {
-    background-color: #c7c7c7;
+    background-color: #6cafeb !important;
 }
 
 button:focus {
     border: none;
-    outline-color: #305E88;
-} */
+    outline-color: #6cafeb !important;
+} 
+
+button, input, optgroup, select, textarea {
+    border: none;
+    outline-color: #6cafeb !important;
+    transition-duration: .4s;
+}
 
 .row {
     text-align: center;
 }
+
 
 header {
     width: 100%;
@@ -51,7 +62,22 @@ header img {
 
 h1, h3, p, li {
     font-family: 'Arial', sans-serif;
+    
 }
+
+h2 {
+margin: 0rem !important;
+
+}
+h3 {
+    display: block;
+    color: #6cafeb;
+    font-size: x-large;
+    margin-block-start: -0.5em !important ;
+    margin-block-end: -1em !important;
+    margin-inline-start: 0px !important;
+    margin-inline-end: 0px !important;
+  }
 
 header h1 {
     margin: 0;
@@ -70,7 +96,7 @@ html {
 }
 
 .searchBtn {
-    background-color: #305E88  !important;
+    background-color: #6cafeb !important;
     background-color: transparent;
 }
 
@@ -87,7 +113,7 @@ html {
     margin: auto;
     width: 100%;
     position: relative;
-    top:-100px;
+    margin-top: -40px ;
 }
 
 #imageSlider {
@@ -110,6 +136,9 @@ html {
 
 .wiki {
     align-items: top;
+    margin-top: -120px;
+    text-align: center;
+    padding: 20px;
 }
 
 
@@ -142,10 +171,28 @@ html {
       height:400px;
   }
 
+  .carousel, .carousel-item {
+    margin-top: -100px !important;
+
+  }
   .presets {
       text-align: center;
+      margin-block-start: 1em !important ;
+      margin-block-end: 1em !important;
+
   }
 
+  .presets:hover {
+    border: none;
+    transition-duration: .4s;
+   
+
+  }
   .jBox {
       width: 300;
+      height: 200;
+  }
+
+  .jBox-content {
+      height: 200;
   }
