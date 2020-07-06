@@ -99,6 +99,10 @@ html {
     background-color: #6cafeb !important;
     background-color: transparent;
 }
+.error {
+    display: none;
+    background-color: red;
+}
 
 .center {
     display: flex;
